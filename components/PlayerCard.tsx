@@ -18,13 +18,13 @@ interface IImageProps {
 const CardWrapper = styled.div`
     font-family: sans-serif;
     font-size: 1em;
-    background-color: whitesmoke;
+    background-color: white;
     display: inline-block;
     margin: 10px;
     padding: 15px;
-    box-shadow: 0 1px 2px #888888;
+    box-shadow: 0 1px 8px #888888;
     border-radius: 3px;
-    width: 150px;
+    width: 180px;
 `;
 
 const CardBanner = styled.div`

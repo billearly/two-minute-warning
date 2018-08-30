@@ -1,6 +1,15 @@
 import React from 'react';
 import PlayerCard from './PlayerCard';
 import mockData from '../data/mock-team';
+import styled from 'styled-components';
+
+const TeamSide = styled.div`
+    height: 50%;
+`;
+
+const GameBoardWrapper = styled.div`
+    height: 100%;
+`;
 
 const GameBoard: React.SFC = () => {
     const getTeam = () => {
@@ -18,9 +27,10 @@ const GameBoard: React.SFC = () => {
     };
 
     return (
-        <>
-            {getTeam()}
-        </>
+        <GameBoardWrapper>
+            <TeamSide>{getTeam()}</TeamSide>
+            <TeamSide>{getTeam()}</TeamSide>
+        </GameBoardWrapper>
     );
 };
 
