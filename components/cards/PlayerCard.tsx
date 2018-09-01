@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import PlayerPosition from '../enum/PlayerPosition';
+import { PlayerPosition } from '../../enum';
+import CardBase from './CardBase';
 
 interface IPlayerInfo {
     firstName: string,
@@ -15,21 +16,9 @@ interface IImageProps {
     position: PlayerPosition;
 }
 
-const CardWrapper = styled.div`
-    font-family: sans-serif;
-    font-size: 1em;
-    background-color: white;
-    display: inline-block;
-    margin: 10px;
-    padding: 15px;
-    box-shadow: 0 1px 8px #888888;
-    border-radius: 3px;
-    width: 180px;
-`;
-
 const CardBanner = styled.div`
     width: 100%;
-    height: 20px;
+    height: 1.25em;
     background-color: ${(p: IImageProps) => {
         switch (p.position) {
             case PlayerPosition.QB:
@@ -51,8 +40,8 @@ const CardHeader = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 25px 0;
-    border-bottom: 1px solid lightgray;
+    padding: 1.5em 0;
+    border-bottom: 0.06em solid lightgray;
 `;
 
 const PlayerName = styled.p`
@@ -61,7 +50,7 @@ const PlayerName = styled.p`
     margin: 0;
 
     &:last-child {
-        padding-top: 5px;
+        padding-top: 0.3em;
     }
 `;
 
@@ -72,7 +61,7 @@ const PlayerPos = styled.p`
 `;
 
 const AttributeWrapper = styled.div`
-    padding-top: 15px;
+    padding-top: 0.3em;
 `;
 
 const PlayerAttribute = styled.p`
@@ -80,7 +69,7 @@ const PlayerAttribute = styled.p`
     text-align: center;
 `;
 
-const PlayerCard: React.SFC<IPlayerInfo> = ({ 
+export const PlayerCard: React.SFC<IPlayerInfo> = ({ 
     firstName,
     lastName,
     position,
@@ -89,7 +78,7 @@ const PlayerCard: React.SFC<IPlayerInfo> = ({
     endurance
 }) => {
     return (
-        <CardWrapper>
+        <CardBase>
             <CardBanner position={position} />
 
             <CardHeader>
@@ -106,8 +95,6 @@ const PlayerCard: React.SFC<IPlayerInfo> = ({
                 <PlayerAttribute>Speed: {speed}</PlayerAttribute>
                 <PlayerAttribute>Endurance: {endurance}</PlayerAttribute>
             </AttributeWrapper>
-        </CardWrapper>
+        </CardBase>
     );
-}
-
-export default PlayerCard;
+};

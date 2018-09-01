@@ -1,10 +1,22 @@
 import React from 'react';
-import PlayerCard from './PlayerCard';
-import mockData from '../data/mock-team';
 import styled from 'styled-components';
+import {
+    PlayerCard,
+    PlayCard
+} from './cards';
+import {
+    mockPlayers,
+    mockPlays
+} from '../data';
 
 const TeamSide = styled.div`
+    display: flex;
+    justify-content: center;
     height: 50%;
+
+    &:first-child {
+        align-items: flex-end;
+    }
 `;
 
 const GameBoardWrapper = styled.div`
@@ -13,7 +25,7 @@ const GameBoardWrapper = styled.div`
 
 const GameBoard: React.SFC = () => {
     const getTeam = () => {
-        return mockData.map((data, i) => 
+        return mockPlayers().map((data, i) => 
             <PlayerCard
                 key={i}
                 firstName={data.firstName}
@@ -26,10 +38,25 @@ const GameBoard: React.SFC = () => {
         );
     };
 
+    const getPlays = () => {
+        return mockPlays().map((play, i) => 
+            <PlayCard
+                key={i}
+                type={play.type}
+                source={play.source}
+                target={play.target}
+                title={play.title}
+                description={play.description}
+                difficulty={play.difficulty}
+            />
+        );
+    }
+
     return (
         <GameBoardWrapper>
             <TeamSide>{getTeam()}</TeamSide>
             <TeamSide>{getTeam()}</TeamSide>
+            <TeamSide>{getPlays()}</TeamSide>
         </GameBoardWrapper>
     );
 };
