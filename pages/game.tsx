@@ -1,8 +1,8 @@
 import React from 'react';
 import GameBoard from '../components/GameBoard';
 
-const Index = () => {
+const Game: React.SFC = () => {
     return <GameBoard />;
 };
 
-export default Index;
+export default Game;
