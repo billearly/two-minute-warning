@@ -17,12 +17,10 @@ const SkipContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
-    color: lightblue;
+    color: ${props => props.theme.colorBlue};
 `;
 
-const LinkWrapper: React.SFC<ILinkProps> = ({
-    linkText
-}) => {
+const LinkWrapper: React.SFC<ILinkProps> = ({ linkText }) => {
     return (
         <Link href="/game" passHref>
             <StyledLink>

@@ -31,19 +31,19 @@ const Input = styled.input`
     width: 100%;
 
     border: none;
-    border-bottom: 1px solid lightblue;
+    border-bottom: 1px solid ${props => props.theme.colorBlue};
 
     ::placeholder {
-        color: lightblue;
+        color: ${props => props.theme.colorBlue};
     }
 `;
 
 const Button = styled.button`
     display: inline-block;
-    color: lightblue;
+    color: ${props => props.theme.colorBlue};
     font-size: 1em;
     padding: 0.25em 1em;
-    border: 2px solid lightblue;
+    border: 2px solid ${props => props.theme.colorBlue};
     border-radius: 3px;
     background-color: transparent;
     cursor: pointer;

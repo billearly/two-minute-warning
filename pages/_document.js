@@ -11,7 +11,6 @@ injectGlobal`
     }
 
     body {
-        background-color: whitesmoke;
         font-family: sans-serif;
         height: 100%
         margin: 0;
