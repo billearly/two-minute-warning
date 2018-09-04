@@ -9,8 +9,8 @@ const CardBase = styled.div`
     padding: 0.9em;
     box-shadow: 0 0.06em 0.5em #888888;
     border-radius: 0.2em;
-    width: 11em;
-    height: 16em;
+    width: 7.5em;
+    height: 11em;
 
     &:hover {
         box-shadow: 0 0.06em 0.5em #7AC9E8;

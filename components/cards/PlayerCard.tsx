@@ -12,35 +12,12 @@ interface IPlayerInfo {
     endurance: number
 };
 
-interface IImageProps { 
-    position: PlayerPosition;
-}
-
-const CardBanner = styled.div`
-    width: 100%;
-    height: 1.25em;
-    background-color: ${(p: IImageProps) => {
-        switch (p.position) {
-            case PlayerPosition.QB:
-                return 'red';
-            case PlayerPosition.WR:
-                return 'blue';
-            case PlayerPosition.RB:
-                return 'green';
-            case PlayerPosition.TE:
-                return 'white'
-            default:
-                return 'grey';
-        }
-    }};
-`;
-
 const CardHeader = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 1.5em 0;
+    padding: 0 0 1.5em;
     border-bottom: 0.06em solid lightgray;
 `;
 
@@ -79,8 +56,6 @@ export const PlayerCard: React.SFC<IPlayerInfo> = ({
 }) => {
     return (
         <CardBase>
-            <CardBanner position={position} />
-
             <CardHeader>
                 <div>
                     <PlayerName>{firstName}</PlayerName>
