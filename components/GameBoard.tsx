@@ -25,17 +25,14 @@ const GameBoardWrapper = styled.div`
 
 const GameBoard: React.SFC = () => {
     const getTeam = () => {
-        return mockPlayers().map((data, i) => 
-            <PlayerCard
-                key={i}
-                firstName={data.firstName}
-                lastName={data.lastName}
-                position={data.position}
-                strength={data.strength}
-                speed={data.speed}
-                endurance={data.endurance}
-            />
-        );
+        return mockPlayers().map((data, i) => {
+            return (
+                <PlayerCard
+                    key={i}
+                    playerInfo={data}
+                />
+            );
+        });
     };
 
     const getPlays = () => {
