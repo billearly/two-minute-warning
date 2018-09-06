@@ -1,0 +1,1 @@
+export { ScoreBoardStore, initStore } from './ScoreBoardStore';

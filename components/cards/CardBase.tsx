@@ -8,7 +8,7 @@ const CardBase = styled.div`
     margin: 0.6em;
     padding: 0.9em;
     box-shadow: 0 0.06em 0.5em #888888;
-    border-radius: 0.2em;
+    border-radius: ${props => props.theme.borderRadius};
     width: 7.5em;
     height: 11em;
 

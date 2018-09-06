@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { PlayerPosition } from '../../enum';
 import CardBase from './CardBase';
-import { inject, observer } from 'mobx-react';
-import { Store } from '../../store';
 
 interface IPlayerInfo {
     firstName: string,
@@ -15,19 +13,8 @@ interface IPlayerInfo {
 };
 
 interface IProps {
-    playerInfo: IPlayerInfo,
-    store?: Store
+    playerInfo: IPlayerInfo
 }
-
-const CardSelectionArea = styled.button`
-    appearance: none;
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-`;
 
 const CardHeader = styled.div`
     display: flex;
@@ -63,37 +50,28 @@ const PlayerAttribute = styled.p`
     text-align: center;
 `;
 
-@inject('store') @observer
 export class PlayerCard extends Component<IProps> {
     constructor(props) {
         super(props);
     }
 
-    handleClick = () => {
-        this.props.store.updateSelection(this.props.playerInfo.firstName);
-    }
-
     render() {
         return (
             <CardBase>
-                <CardSelectionArea onClick={this.handleClick}>
-                    <CardHeader>
-                        <div>
-                            <PlayerName>{this.props.playerInfo.firstName}</PlayerName>
-                            <PlayerName>{this.props.playerInfo.lastName}</PlayerName>
-                        </div>
-                        
-                        <PlayerPos>{this.props.playerInfo.position}</PlayerPos>
-                    </CardHeader>
-        
-                    <AttributeWrapper>
-                        <PlayerAttribute>Strength: {this.props.playerInfo.strength}</PlayerAttribute>
-                        <PlayerAttribute>Speed: {this.props.playerInfo.speed}</PlayerAttribute>
-                        <PlayerAttribute>Endurance: {this.props.playerInfo.endurance}</PlayerAttribute>
-                    </AttributeWrapper>
-                </CardSelectionArea>
-
-                <span>{this.props.store.selectedCardSlot}</span>
+                <CardHeader>
+                    <div>
+                        <PlayerName>{this.props.playerInfo.firstName}</PlayerName>
+                        <PlayerName>{this.props.playerInfo.lastName}</PlayerName>
+                    </div>
+                    
+                    <PlayerPos>{this.props.playerInfo.position}</PlayerPos>
+                </CardHeader>
+    
+                <AttributeWrapper>
+                    <PlayerAttribute>Strength: {this.props.playerInfo.strength}</PlayerAttribute>
+                    <PlayerAttribute>Speed: {this.props.playerInfo.speed}</PlayerAttribute>
+                    <PlayerAttribute>Endurance: {this.props.playerInfo.endurance}</PlayerAttribute>
+                </AttributeWrapper>
             </CardBase>
         );
     }

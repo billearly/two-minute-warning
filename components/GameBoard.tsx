@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CardSlot, PlayerCard, PlayCard } from './cards';
+import { ScoreBoard } from './hud';
 import { PlayerPosition } from '../enum';
 import { mockPlayers, mockPlays } from '../data';
 
@@ -50,23 +51,28 @@ const GameBoard: React.SFC = () => {
     }
 
     return (
-        <GameBoardWrapper>
-            <TeamSide>
-                <CardSlot playerPosition={PlayerPosition.CB} />
-                <CardSlot playerPosition={PlayerPosition.DE} />
-                <CardSlot playerPosition={PlayerPosition.LB} />
-                <CardSlot playerPosition={PlayerPosition.DT} />
-                <CardSlot playerPosition={PlayerPosition.S} />
-            </TeamSide>
-            <TeamSide>
-                <CardSlot playerPosition={PlayerPosition.WR} />
-                <CardSlot playerPosition={PlayerPosition.TE} />
-                <CardSlot playerPosition={PlayerPosition.QB} />
-                <CardSlot playerPosition={PlayerPosition.RB} />
-                <CardSlot playerPosition={PlayerPosition.WR} />
-            </TeamSide>
-            <TeamSide>{getTeam()}</TeamSide>
-        </GameBoardWrapper>
+        <>
+            <ScoreBoard />
+
+            <GameBoardWrapper>
+                <TeamSide>
+                    <CardSlot playerPosition={PlayerPosition.CB} />
+                    <CardSlot playerPosition={PlayerPosition.DE} />
+                    <CardSlot playerPosition={PlayerPosition.LB} />
+                    <CardSlot playerPosition={PlayerPosition.DT} />
+                    <CardSlot playerPosition={PlayerPosition.S} />
+                </TeamSide>
+                
+                <TeamSide>
+                    <CardSlot playerPosition={PlayerPosition.WR} />
+                    <CardSlot playerPosition={PlayerPosition.TE} />
+                    <CardSlot playerPosition={PlayerPosition.QB} />
+                    <CardSlot playerPosition={PlayerPosition.RB} />
+                    <CardSlot playerPosition={PlayerPosition.WR} />
+                </TeamSide>
+                <TeamSide>{getTeam()}</TeamSide>
+            </GameBoardWrapper>
+        </>
     );
 };
 

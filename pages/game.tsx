@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Provider } from 'mobx-react';
 import GameBoard from '../components/GameBoard';
-import { Store, initStore } from '../store';
+import { ScoreBoardStore, initStore } from '../stores';
 
 interface IGameProps {
-    store?: Store
+    store?: ScoreBoardStore
 }
 
 export default class Game extends Component<IGameProps> {
@@ -13,7 +13,12 @@ export default class Game extends Component<IGameProps> {
     static getInitialProps ({ req }) {
         const isServer = !!req
         const store = initStore(isServer)
-        return { selectedCardSlot: store.selectedCardSlot, isServer }
+        
+        return {
+            down: store.down,
+            yardsToGo: store.yardsToGo,
+            isServer
+        }
     }
 
     constructor(props){
