@@ -1,1 +1,2 @@
-export { ScoreBoardStore, initStore } from './ScoreBoardStore';
+export { ScoreBoardStore } from './ScoreBoardStore';
+export { PlayerDeckStore } from './PlayerDeckStore';

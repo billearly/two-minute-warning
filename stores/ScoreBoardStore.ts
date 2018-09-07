@@ -1,7 +1,5 @@
 import { action, observable, computed } from 'mobx';
 
-let cachedStore = null;
-
 export class ScoreBoardStore {
     @observable 
     down: number = 1;
@@ -53,18 +51,4 @@ export class ScoreBoardStore {
         this.down = Math.floor(Math.random() * 4) + 1;
         this.yardsToGo = Math.floor(Math.random() * 30) + 1;
     }
-}
-
-const getCachedStore = (): ScoreBoardStore => {
-    if (cachedStore === null) {
-        cachedStore = new ScoreBoardStore();
-    }
-
-    return cachedStore;
-}
-
-export const initStore = (isServer): ScoreBoardStore => {
-    return isServer
-        ? new ScoreBoardStore()
-        : getCachedStore();
 }

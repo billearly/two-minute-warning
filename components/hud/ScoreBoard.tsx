@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
-import { ScoreBoardStore } from '../../stores';
+import { ScoreBoardStore, PlayerDeckStore } from '../../stores';
 
 interface IProps {
-    store?: ScoreBoardStore
+    ScoreBoardStore: ScoreBoardStore,
+    PlayerDeckStore: PlayerDeckStore
 }
 
 const StyledScoreBoard = styled.div`
@@ -34,18 +35,21 @@ const ScoreboardSection = styled.span`
     }
 `;
 
-@inject('store')
+@inject('ScoreBoardStore')
+@inject('PlayerDeckStore')
 @observer
 export class ScoreBoard extends Component<IProps> {
     render() {
         return (
             <StyledScoreBoard>
-                <ScoreboardSection>{this.props.store.getScore}</ScoreboardSection>
+                <ScoreboardSection>{this.props.ScoreBoardStore.getScore}</ScoreboardSection>
                 <ScoreboardSection>1:56</ScoreboardSection>
-                <ScoreboardSection>{this.props.store.getCurrentDown}</ScoreboardSection>
+                <ScoreboardSection>{this.props.ScoreBoardStore.getCurrentDown}</ScoreboardSection>
 
-                <button onClick={this.props.store.makeRandomDown}>Random Down</button>
-                <button onClick={this.props.store.resetDowns}>Reset Downs</button>
+                <button onClick={this.props.ScoreBoardStore.makeRandomDown}>Random Down</button>
+                <button onClick={this.props.ScoreBoardStore.resetDowns}>Reset Downs</button>
+
+                <span>{this.props.PlayerDeckStore.getCardCount}</span>
             </StyledScoreBoard>
         );
     }
