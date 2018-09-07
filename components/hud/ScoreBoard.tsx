@@ -43,13 +43,15 @@ export class ScoreBoard extends Component<IProps> {
         return (
             <StyledScoreBoard>
                 <ScoreboardSection>{this.props.ScoreBoardStore.getScore}</ScoreboardSection>
-                <ScoreboardSection>1:56</ScoreboardSection>
+                <ScoreboardSection>{this.props.ScoreBoardStore.getTimeLeft}</ScoreboardSection>
                 <ScoreboardSection>{this.props.ScoreBoardStore.getCurrentDown}</ScoreboardSection>
 
                 <button onClick={this.props.ScoreBoardStore.makeRandomDown}>Random Down</button>
                 <button onClick={this.props.ScoreBoardStore.resetDowns}>Reset Downs</button>
+                <button onClick={this.props.ScoreBoardStore.startGame}>Start Game</button>
 
                 <span>{this.props.PlayerDeckStore.getCardCount}</span>
+
             </StyledScoreBoard>
         );
     }

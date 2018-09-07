@@ -4,28 +4,36 @@ import GameBoard from '../components/GameBoard';
 import * as stores from '../stores';
 import { initStore } from '../stores/helpers';
 
-export default class Game extends Component {
+interface IGameProps {
+    isServer: boolean
+}
+
+const initAllStores = (stores: object, isServer: boolean): object => {
+    let allStores = {};
+
+    for (var store in stores) {
+        if (Object.hasOwnProperty.call(stores, store)) {
+            allStores[store] = initStore(store, isServer);
+        }
+    }
+
+    return allStores;
+}
+
+export default class Game extends Component<IGameProps> {
     allStores = {};
     
     static getInitialProps ({ req }) {
         const isServer = !!req
-        const allStores = {};
-        
-        for (var store in stores) {
-            if (Object.hasOwnProperty.call(stores, store)) {
-                allStores[store] = initStore(store, isServer);
-            }
+
+        return {
+            isServer: isServer
         }
     }
 
-    constructor(props){
+    constructor(props) {
         super(props);
-
-        for (var store in stores) {
-            if (Object.hasOwnProperty.call(stores, store)) {
-                this.allStores[store] = initStore(store, props.isServer);
-            }
-        }
+        this.allStores = initAllStores(stores, this.props.isServer);
     }
 
     render() {
