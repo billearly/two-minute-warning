@@ -1,22 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardSlot, PlayerCard, PlayCard } from './cards';
-import { ScoreBoard } from './hud';
-import { PlayerPosition } from '../enum';
-import { mockPlayers, mockPlays } from '../data';
-
-const TeamSide = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 50%;
-    width: 70%;
-    margin: 0 auto;
-
-    &:first-child {
-        align-items: flex-end;
-        border-bottom: 2px solid white;
-    }
-`;
+import { CardSlot, PlayerCard, PlayCard } from '../cards';
+import { TeamSide } from './TeamSide';
+import { PlayCardArea } from './PlayCardArea';
+import { PlayCardDeck } from './PlayCardDeck';
+import { ScoreBoard, PlayerDeck } from '../hud';
+import { PlayerPosition } from '../../enum';
+import { mockPlayers, mockPlays } from '../../data';
 
 const GameBoardWrapper = styled.div`
     height: 100%;
@@ -71,6 +61,14 @@ const GameBoard: React.SFC = () => {
                     <CardSlot playerPosition={PlayerPosition.WR} />
                 </TeamSide>
                 <TeamSide>{getTeam()}</TeamSide>
+
+                <PlayCardArea>
+                    <CardSlot playerPosition={PlayerPosition.WR} />
+                    <CardSlot playerPosition={PlayerPosition.WR} />
+                    <CardSlot playerPosition={PlayerPosition.WR} />
+                </PlayCardArea>
+
+                <PlayCardDeck />
             </GameBoardWrapper>
         </>
     );

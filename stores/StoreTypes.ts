@@ -1,6 +1,6 @@
 enum StoreType {
     SCOREBOARD = "ScoreBoardStore",
-    PLAYERDECK = "PlayerDeckStore"
+    CARDSTORE = "CardStore"
 };
 
 export default StoreType;

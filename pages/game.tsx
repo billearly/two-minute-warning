@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'mobx-react';
-import GameBoard from '../components/GameBoard';
+import GameBoard from '../components/board/GameBoard';
 import * as stores from '../stores';
 import { initStore } from '../stores/helpers';
 

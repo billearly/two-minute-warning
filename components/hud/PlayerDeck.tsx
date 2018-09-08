@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { PlayerDeckStore } from '../../stores';
+import { CardStore } from '../../stores';
+import StoreTypes from '../../stores/StoreTypes';
 
 interface IProps {
-    store?: PlayerDeckStore
+    CardStore?: CardStore
 }
 
-@inject('store')
+@inject(StoreTypes.CARDSTORE)
 @observer
 export class PlayerDeck extends Component<IProps> {
-    static getInitialProps ({ req }): IProps {
-        return {
-            store: req.store
-        }
-    }
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <>
                 <p>Player deck info</p>
-                <p>Count: {this.props.store.getCardCount}</p>
-                <p>Second Card: {this.props.store.getCard(1)}</p>
+                <p>Count: {this.props.CardStore.getCardCount}</p>
+                <p>Second Card: {this.props.CardStore.getCard(1)}</p>
             </>
         );
     }

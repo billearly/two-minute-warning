@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
-import { ScoreBoardStore, PlayerDeckStore } from '../../stores';
+import { ScoreBoardStore, CardStore } from '../../stores';
+import StoreTypes from '../../stores/StoreTypes';
 
 interface IProps {
-    ScoreBoardStore: ScoreBoardStore,
-    PlayerDeckStore: PlayerDeckStore
+    ScoreBoardStore?: ScoreBoardStore,
+    CardStore?: CardStore
 }
 
 const StyledScoreBoard = styled.div`
@@ -35,8 +36,8 @@ const ScoreboardSection = styled.span`
     }
 `;
 
-@inject('ScoreBoardStore')
-@inject('PlayerDeckStore')
+@inject(StoreTypes.SCOREBOARD)
+@inject(StoreTypes.CARDSTORE)
 @observer
 export class ScoreBoard extends Component<IProps> {
     render() {
@@ -50,7 +51,7 @@ export class ScoreBoard extends Component<IProps> {
                 <button onClick={this.props.ScoreBoardStore.resetDowns}>Reset Downs</button>
                 <button onClick={this.props.ScoreBoardStore.startGame}>Start Game</button>
 
-                <span>{this.props.PlayerDeckStore.getCardCount}</span>
+                <span>{this.props.CardStore.getCardCount}</span>
 
             </StyledScoreBoard>
         );

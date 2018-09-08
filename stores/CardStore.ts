@@ -1,6 +1,9 @@
 import { action, observable, computed } from 'mobx';
 
-export class PlayerDeckStore {
+export class CardStore {
+    @observable
+    playAreaVisible: boolean = false;
+
     @observable
     cards: string[] = [
         'ksd-dfjvkj0-cdskl',
@@ -16,5 +19,10 @@ export class PlayerDeckStore {
     @action
     getCard = (index: number): string => {
         return this.cards[index];
+    }
+
+    @action
+    togglePlayAreaVisibility = (visibility: boolean): void => {
+        this.playAreaVisible = visibility;
     }
 }
