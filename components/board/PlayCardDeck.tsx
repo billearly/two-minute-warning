@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { inject, observer } from 'mobx-react';
+import { CardStore } from '../../stores';
+import StoreTypes from '../../stores/StoreTypes';
+
+interface IProps {
+    CardStore?: CardStore
+}
 
 const PlayCardDeckStyled = styled.div`
     height: 3rem;
@@ -20,10 +27,14 @@ const PlayCardDeckStyled = styled.div`
     pointer-events: none;
 `;
 
-export const PlayCardDeck: React.SFC = () => {
-    return (
-        <PlayCardDeckStyled>
-            PLAY CARDS
-        </PlayCardDeckStyled>
-    );
+@inject(StoreTypes.CARDSTORE)
+@observer
+export class PlayCardDeck extends Component<IProps> {
+    render() {
+        return (
+            <PlayCardDeckStyled>
+                PLAY CARDS: {this.props.CardStore.playCards.length}
+            </PlayCardDeckStyled>
+        );
+    }
 }

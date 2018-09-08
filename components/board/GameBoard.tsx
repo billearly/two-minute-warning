@@ -6,7 +6,6 @@ import { PlayCardArea } from './PlayCardArea';
 import { PlayCardDeck } from './PlayCardDeck';
 import { ScoreBoard, PlayerDeck } from '../hud';
 import { PlayerPosition } from '../../enum';
-import { mockPlayers, mockPlays } from '../../data';
 
 const GameBoardWrapper = styled.div`
     height: 100%;
@@ -15,31 +14,6 @@ const GameBoardWrapper = styled.div`
 `;
 
 const GameBoard: React.SFC = () => {
-    const getTeam = () => {
-        return mockPlayers().map((data, i) => {
-            return (
-                <PlayerCard
-                    key={i}
-                    playerInfo={data}
-                />
-            );
-        });
-    };
-
-    const getPlays = () => {
-        return mockPlays().map((play, i) => 
-            <PlayCard
-                key={i}
-                type={play.type}
-                source={play.source}
-                target={play.target}
-                title={play.title}
-                description={play.description}
-                difficulty={play.difficulty}
-            />
-        );
-    }
-
     return (
         <>
             <ScoreBoard />
@@ -60,7 +34,6 @@ const GameBoard: React.SFC = () => {
                     <CardSlot playerPosition={PlayerPosition.RB} />
                     <CardSlot playerPosition={PlayerPosition.WR} />
                 </TeamSide>
-                <TeamSide>{getTeam()}</TeamSide>
 
                 <PlayCardArea>
                     <CardSlot playerPosition={PlayerPosition.WR} />

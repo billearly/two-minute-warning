@@ -50,9 +50,6 @@ export class ScoreBoard extends Component<IProps> {
                 <button onClick={this.props.ScoreBoardStore.makeRandomDown}>Random Down</button>
                 <button onClick={this.props.ScoreBoardStore.resetDowns}>Reset Downs</button>
                 <button onClick={this.props.ScoreBoardStore.startGame}>Start Game</button>
-
-                <span>{this.props.CardStore.getCardCount}</span>
-
             </StyledScoreBoard>
         );
     }

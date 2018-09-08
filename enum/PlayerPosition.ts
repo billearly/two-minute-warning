@@ -1,8 +1,14 @@
-enum PlayerPosition {
+export enum PlayerPosition {
+    // Offense
     QB = 'QB',
     WR = 'WR',
     RB = 'RB',
-    TE = 'TE'
-}
+    TE = 'TE',
 
-export default PlayerPosition;
+    // Defense
+    DE = 'DE',
+    DT = 'DT',
+    LB = 'LB',
+    CB = 'CB',
+    S = 'S'
+}

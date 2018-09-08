@@ -1,6 +1,4 @@
-enum PlayType {
+export enum PlayType {
     PASS = 'PASS',
     RUN = 'RUN'
 };
-
-export default PlayType;

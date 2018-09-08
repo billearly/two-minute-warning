@@ -1,28 +1,14 @@
 import { action, observable, computed } from 'mobx';
+import { mockPlayers, mockPlays } from '../data';
+import { IPlayer, IPlay } from '../model';
 
 export class CardStore {
     @observable
-    playAreaVisible: boolean = false;
+    playerCards: IPlayer[] = mockPlayers;
 
     @observable
-    cards: string[] = [
-        'ksd-dfjvkj0-cdskl',
-        'nsfg-jkdn-dsv-vfd',
-        'kllkm0v9lkmv-skbv'
-    ];
+    playCards: IPlay[] = mockPlays;
 
-    @computed
-    get getCardCount (): number {
-        return this.cards.length;
-    }
-
-    @action
-    getCard = (index: number): string => {
-        return this.cards[index];
-    }
-
-    @action
-    togglePlayAreaVisibility = (visibility: boolean): void => {
-        this.playAreaVisible = visibility;
-    }
+    @observable
+    test: number = 123;
 }
