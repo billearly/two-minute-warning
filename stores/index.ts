@@ -1,2 +1,3 @@
 export { ScoreBoardStore } from './ScoreBoardStore';
-export { CardStore } from './CardStore';
+export { DeckStore } from './DeckStore';
+export { HandStore } from './HandStore';

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
-import { CardStore } from '../../stores';
+import { DeckStore } from '../../stores';
 import StoreTypes from '../../stores/StoreTypes';
 
 interface IProps {
-    CardStore?: CardStore
+    DeckStore?: DeckStore
 }
 
 const PlayCardDeckStyled = styled.div`
@@ -27,13 +27,13 @@ const PlayCardDeckStyled = styled.div`
     pointer-events: none;
 `;
 
-@inject(StoreTypes.CARDSTORE)
+@inject(StoreTypes.DECKSTORE)
 @observer
 export class PlayCardDeck extends Component<IProps> {
     render() {
         return (
             <PlayCardDeckStyled>
-                PLAY CARDS: {this.props.CardStore.playCards.length}
+                PLAY CARDS: {this.props.DeckStore.playCards.length}
             </PlayCardDeckStyled>
         );
     }

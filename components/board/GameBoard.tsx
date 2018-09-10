@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardSlot, PlayerCard, PlayCard } from '../cards';
+import { CardSlot } from '../cards';
 import { TeamSide } from './TeamSide';
 import { PlayCardArea } from './PlayCardArea';
 import { PlayCardDeck } from './PlayCardDeck';
-import { ScoreBoard, PlayerDeck } from '../hud';
+import { Hand } from './Hand';
+import { ScoreBoard } from '../hud';
+
 import { PlayerPosition } from '../../enum';
 
 const GameBoardWrapper = styled.div`
@@ -41,6 +43,7 @@ const GameBoard: React.SFC = () => {
                     <CardSlot playerPosition={PlayerPosition.WR} />
                 </PlayCardArea>
 
+                <Hand />
                 <PlayCardDeck />
             </GameBoardWrapper>
         </>

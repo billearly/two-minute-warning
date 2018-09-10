@@ -1,8 +1,9 @@
 import StoreType from './StoreTypes';
-import { ScoreBoardStore, CardStore } from './';
+import { ScoreBoardStore, DeckStore, HandStore } from './';
 
 let scoreBoardStore = null;
-let cardStore = null;
+let deckStore = null;
+let handStore = null;
 
 const getCachedStore = (store: string): object => {
     switch(store) {
@@ -13,12 +14,19 @@ const getCachedStore = (store: string): object => {
 
             return scoreBoardStore;
         
-        case StoreType.CARDSTORE:
-            if (cardStore === null) {
-                cardStore = new CardStore();
+        case StoreType.DECKSTORE:
+            if (deckStore === null) {
+                deckStore = new DeckStore();
             }
 
-            return cardStore;
+            return deckStore;
+
+        case StoreType.HANDSTORE:
+            if (handStore === null) {
+                handStore = new HandStore();
+            }
+
+            return handStore;
 
         default:
             throw new Error(`${store} is not a defined store type`);
@@ -30,8 +38,11 @@ const createNewStore = (store: string): object => {
         case StoreType.SCOREBOARD:
             return new ScoreBoardStore();
 
-        case StoreType.CARDSTORE:
-            return new CardStore();
+        case StoreType.DECKSTORE:
+            return new DeckStore();
+
+        case StoreType.HANDSTORE:
+            return new HandStore();
         
         default:
             throw new Error(`${store} is not a defined store type`);
