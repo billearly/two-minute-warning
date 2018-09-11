@@ -14,13 +14,38 @@ interface IPlayInfo {
     difficulty: number
 }
 
-const PlayTitle = styled.h3`
-    text-align: center;
+const PlayTitle = styled.p`
+    color: white;
+
     font-weight: bold;
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
 `;
 
 const PlayDescription = styled.p`
-    text-align: center;
+    color: white;
+    font-size: 0.8em;
+    
+    position: relative;
+    z-index: 1;
+`;
+
+const ColorAccent = styled.div`
+    background-color: #E85558;
+    height: 80%;
+    width: 150%;
+
+    position: absolute;
+    bottom: -15%;
+    left: -30%;
+
+    transform: rotate(12deg);
+
+    &:first-of-type {
+        background-color: gray;
+        bottom: 30%;
+    }
 `;
 
 export const PlayCard: React.SFC<IPlayInfo> = ({
@@ -35,10 +60,13 @@ export const PlayCard: React.SFC<IPlayInfo> = ({
         <CardBase>
             <PlayTitle>{title}</PlayTitle>
 
-            <PlayDescription>{description}</PlayDescription>
             <PlayDescription>{type}</PlayDescription>
             <PlayDescription>{source} to {target}</PlayDescription>
+            <PlayDescription>{description}</PlayDescription>
             <PlayDescription>Difficulty: {difficulty}</PlayDescription>
+
+            <ColorAccent />
+            <ColorAccent />
         </CardBase>
     );
 };

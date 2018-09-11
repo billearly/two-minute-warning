@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { PlayerPosition } from '../../enum';
+import { IPlayer } from '../../model';
 import CardBase from './CardBase';
 
-interface IPlayerInfo {
-    firstName: string,
-    lastName: string;
-    position: PlayerPosition;
-    strength: number,
-    speed: number,
-    endurance: number
-};
-
 interface IProps {
-    playerInfo: IPlayerInfo
+    playerInfo: IPlayer
 }
 
 const CardHeader = styled.div`

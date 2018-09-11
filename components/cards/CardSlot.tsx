@@ -8,22 +8,29 @@ interface ICardSlotProps {
 }
 
 const StyledCardSlot = styled(CardBase)`
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+    border: 1px dashed ${props => props.theme.colorBlackTransparent};
     box-shadow: none;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    &:hover {
+        box-shadow: none;
+        transform: none;
+    }
 `;
 
 const CardSlotLabel = styled.span`
     text-align: center;
-    color: ${props => props.theme.colorWhiteTransparent};
+    color: ${props => props.theme.colorBlackTransparent};
 
     margin: 0 auto;
-    border: 1px solid ${props => props.theme.colorWhiteTransparent};
-    border-radius: 0.2em;
     padding: 0.5em 1em;
+
+    border: 1px dashed ${props => props.theme.colorBlackTransparent};
+    border-radius: 0.2em;
 `;
 
 export const CardSlot: React.SFC<ICardSlotProps> = ({ playerPosition }) => {
