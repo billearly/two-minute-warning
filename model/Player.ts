@@ -1,10 +1,11 @@
-import { PlayerPosition } from 'enum';
+import { PlayerPosition, CardType } from 'enum';
 
 export interface IPlayer {
-    firstName: string,
+    cardType: CardType;
+    firstName: string;
     lastName: string;
     position: PlayerPosition;
-    strength: number,
-    speed: number,
-    endurance: number
+    strength: number;
+    speed: number;
+    endurance: number;
 };

@@ -1,8 +1,9 @@
 import { IPlayer } from '../model';
-import { PlayerPosition } from '../enum';
+import { PlayerPosition, CardType } from '../enum';
 
 export const mockPlayers: IPlayer[] = [
     {
+        cardType: CardType.PLAYER,
         firstName: 'Bill',
         lastName: 'Early',
         position: PlayerPosition.QB,
@@ -11,6 +12,7 @@ export const mockPlayers: IPlayer[] = [
         endurance: 10.0
     },
     {
+        cardType: CardType.PLAYER,
         firstName: 'Greg',
         lastName: 'Pease',
         position: PlayerPosition.WR,
@@ -19,6 +21,7 @@ export const mockPlayers: IPlayer[] = [
         endurance: 9.4
     },
     {
+        cardType: CardType.PLAYER,
         firstName: 'Kevin',
         lastName: 'Lee',
         position: PlayerPosition.TE,
@@ -27,6 +30,7 @@ export const mockPlayers: IPlayer[] = [
         endurance: 6.5
     },
     {
+        cardType: CardType.PLAYER,
         firstName: 'Chris',
         lastName: 'Adley',
         position: PlayerPosition.RB,

@@ -1,18 +1,7 @@
 import styled from 'styled-components';
 import CardBase from './CardBase';
-import {
-    PlayerPosition,
-    PlayType
-} from '../../enum';
-
-interface IPlayInfo {
-    type: PlayType,
-    source: PlayerPosition,
-    target: PlayerPosition,
-    title: string,
-    description: string,
-    difficulty: number
-}
+import { IPlay } from '../../model';
+import { Component } from 'react';
 
 const PlayTitle = styled.p`
     color: white;
@@ -48,8 +37,8 @@ const ColorAccent = styled.div`
     }
 `;
 
-export const PlayCard: React.SFC<IPlayInfo> = ({
-    type,
+export const PlayCard: React.SFC<IPlay> = ({
+    playType,
     source,
     target,
     title,
@@ -60,7 +49,7 @@ export const PlayCard: React.SFC<IPlayInfo> = ({
         <CardBase>
             <PlayTitle>{title}</PlayTitle>
 
-            <PlayDescription>{type}</PlayDescription>
+            <PlayDescription>{playType}</PlayDescription>
             <PlayDescription>{source} to {target}</PlayDescription>
             <PlayDescription>{description}</PlayDescription>
             <PlayDescription>Difficulty: {difficulty}</PlayDescription>

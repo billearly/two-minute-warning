@@ -33,7 +33,7 @@ export class PlayCardDeck extends Component<IProps> {
     render() {
         return (
             <PlayCardDeckStyled>
-                PLAY CARDS: {this.props.DeckStore.playCards.length}
+                CARDS: {this.props.DeckStore.playCards.length + this.props.DeckStore.playerCards.length}
             </PlayCardDeckStyled>
         );
     }

@@ -1,10 +1,11 @@
-import { PlayerPosition, PlayType } from '../enum';
+import { PlayerPosition, PlayType, CardType } from '../enum';
 
 export interface IPlay {
-    type: PlayType,
-    source: PlayerPosition,
-    target: PlayerPosition,
-    title: string,
-    description: string,
-    difficulty: number
+    cardType: CardType;
+    playType: PlayType;
+    source: PlayerPosition;
+    target: PlayerPosition;
+    title: string;
+    description: string;
+    difficulty: number;
 }

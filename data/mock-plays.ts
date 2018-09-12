@@ -1,9 +1,10 @@
 import { IPlay } from '../model';
-import { PlayerPosition, PlayType } from '../enum';
+import { PlayerPosition, PlayType, CardType } from '../enum';
 
 export const mockPlays: IPlay[] = [
     {
-        type: PlayType.PASS,
+        cardType: CardType.PLAY,
+        playType: PlayType.PASS,
         source: PlayerPosition.QB,
         target: PlayerPosition.WR,
         title: 'Short Pass',
@@ -11,7 +12,8 @@ export const mockPlays: IPlay[] = [
         difficulty: 3.2
     },
     {
-        type: PlayType.RUN,
+        cardType: CardType.PLAY,
+        playType: PlayType.RUN,
         source: PlayerPosition.QB,
         target: PlayerPosition.RB,
         title: 'Basic Run',
@@ -19,7 +21,8 @@ export const mockPlays: IPlay[] = [
         difficulty: 2.6
     },
     {
-        type: PlayType.PASS,
+        cardType: CardType.PLAY,
+        playType: PlayType.PASS,
         source: PlayerPosition.QB,
         target: PlayerPosition.WR,
         title: 'Hail Mary',

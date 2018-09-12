@@ -10,7 +10,17 @@ export class DeckStore {
     playCards: IPlay[] = mockPlays;
 
     @action
-    drawPlayerCard = (): IPlayer => {
+    drawCard = (): IPlayer | IPlay => {
+        const flip = Math.floor(Math.random() * 2);
+
+        if (flip === 1) {
+            return this.drawPlayCard();
+        } else {
+            return this.drawPlayerCard();
+        }
+    }
+
+    private drawPlayerCard = (): IPlayer => {
         if (this.playerCards.length > 0) {
             const randomNum = Math.floor(Math.random() * this.playerCards.length);
             const drawnCard = this.playerCards.splice(randomNum, 1);
@@ -21,8 +31,7 @@ export class DeckStore {
         return null;
     }
 
-    @action
-    drawPlayCard = (): IPlay => {
+    private drawPlayCard = (): IPlay => {
         if (this.playCards.length > 0) {
             const randomNum = Math.floor(Math.random() * this.playCards.length);
             const drawnCard = this.playCards.splice(randomNum, 1);
@@ -32,4 +41,5 @@ export class DeckStore {
         
         return null;
     }
+
 }

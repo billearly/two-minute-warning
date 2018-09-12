@@ -1,21 +1,18 @@
 import { observable, action } from 'mobx'
-
-//temp
 import { IPlayer, IPlay } from '../model';
-import { PlayerPosition }  from '../enum';
 
 
 export class HandStore {
     @observable
-    cards: IPlayer[] = [];
-
-    @observable
     playCards: IPlay[] = [];
 
+    @observable
+    cards: (IPlay|IPlayer)[] = [];
+
     @action
-    addPlayCard = (playCard: IPlay): void => {
-        if (playCard) {
-            this.playCards.push(playCard);
+    addCard = (card: (IPlay|IPlayer)): void => {
+        if (card) {
+            this.cards.push(card);
         }
     }
 }

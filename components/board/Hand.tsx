@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import StoreType from '../../stores/StoreTypes';
 import { HandStore, DeckStore } from '../../stores';
-import { PlayCard } from '../cards';
+import { PlayerCard, PlayCard } from '../cards';
+import { IPlay, IPlayer } from 'model';
+import { CardType } from '../../enum';
 
 interface IProps {
     HandStore?: HandStore;
@@ -15,10 +17,7 @@ const StyledHand = styled.div`
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-
     background-color: ${props => props.theme.colorBlue};
-
-    overflow-x: auto;
 `;
 
 @inject(StoreType.HANDSTORE)
@@ -29,31 +28,56 @@ export class Hand extends Component<IProps> {
         super(props);
 
         this.drawCardFromDeck = this.drawCardFromDeck.bind(this);
-        this.renderPlayCards = this.renderPlayCards.bind(this);
+        this.renderCards = this.renderCards.bind(this);
+        this.generatePlayCard = this.generatePlayCard.bind(this);
+        this.generatePlayerCard = this.generatePlayerCard.bind(this);
     }
 
-    drawCardFromDeck() {
-        this.props.HandStore.addPlayCard(this.props.DeckStore.drawPlayCard());
+    drawCardFromDeck(): void {
+        const drawnCard = this.props.DeckStore.drawCard();
+        this.props.HandStore.addCard(drawnCard);
     }
 
-    renderPlayCards() {
-        return this.props.HandStore.playCards.map((card, i) =>
+    generatePlayCard(play: IPlay, index: number): JSX.Element {
+        return (
             <PlayCard
-                key={i}
-                type={card.type}
-                source={card.source}
-                target={card.target}
-                title={card.title}
-                description={card.description}
-                difficulty={card.difficulty}
+                key={index}
+                cardType={play.cardType}
+                playType={play.playType}
+                source={play.source}
+                target={play.target}
+                title={play.title}
+                description={play.description}
+                difficulty={play.difficulty}
             />
         );
+    }
+
+    generatePlayerCard(player: IPlayer, index: number): JSX.Element {
+        return (
+            <PlayerCard
+                key={index}
+                playerInfo={player}
+            />
+        );
+    }
+
+    renderCards(): JSX.Element[] {
+        return this.props.HandStore.cards.map((card, i) => {
+            switch(card.cardType) {
+                case CardType.PLAY:
+                    return this.generatePlayCard(card as IPlay, i);
+
+                case CardType.PLAYER:
+                    return this.generatePlayerCard(card as IPlayer, i);
+            }
+        });
     }
 
     render() {
         return (
             <StyledHand>
-                {this.renderPlayCards()}
+                {this.renderCards()}
                 <button onClick={this.drawCardFromDeck}>Draw Card</button>
             </StyledHand>
         );
