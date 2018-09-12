@@ -33,10 +33,11 @@ const CardSlotLabel = styled.span`
     border-radius: 0.2em;
 `;
 
-export const CardSlot: React.SFC<ICardSlotProps> = ({ playerPosition }) => {
+export const CardSlot: React.SFC<ICardSlotProps> = ({ playerPosition, children }) => {
     return (
         <StyledCardSlot>
             <CardSlotLabel>{playerPosition}</CardSlotLabel>
+            {children}
         </StyledCardSlot>
     );
 };

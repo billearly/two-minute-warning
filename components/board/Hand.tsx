@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import StoreType from '../../stores/StoreTypes';
-import { HandStore, DeckStore } from '../../stores';
+import { HandStore, DeckStore, InPlayStore } from '../../stores';
 import { PlayerCard, PlayCard } from '../cards';
 import { IPlay, IPlayer } from 'model';
-import { CardType } from '../../enum';
+import { CardType, PlayerPosition } from '../../enum';
 
 interface IProps {
     HandStore?: HandStore;
     DeckStore?: DeckStore;
+    InPlayStore?: InPlayStore;
 }
 
 const StyledHand = styled.div`
@@ -22,6 +23,7 @@ const StyledHand = styled.div`
 
 @inject(StoreType.HANDSTORE)
 @inject(StoreType.DECKSTORE)
+@inject(StoreType.INPLAYSTORE)
 @observer
 export class Hand extends Component<IProps> {
     constructor(props) {
@@ -53,6 +55,22 @@ export class Hand extends Component<IProps> {
         );
     }
 
+    addCardToTeam(position: PlayerPosition): void {
+        //temp...maybe
+        for (var i = 0; i < this.props.HandStore.cards.length; i++) {
+            var card = this.props.HandStore.cards[i];
+            if (card.cardType === CardType.PLAYER) {
+                const playerCard = card as IPlayer;
+
+                if (playerCard.position === position) {
+                    // the magic. Not actually removing the card from HandStore yet
+                    this.props.InPlayStore.addCard(playerCard);
+                    break;
+                }
+            }
+        }
+    }
+
     generatePlayerCard(player: IPlayer, index: number): JSX.Element {
         return (
             <PlayerCard
@@ -79,6 +97,7 @@ export class Hand extends Component<IProps> {
             <StyledHand>
                 {this.renderCards()}
                 <button onClick={this.drawCardFromDeck}>Draw Card</button>
+                <button onClick={() => this.addCardToTeam(PlayerPosition.QB)}>Play Card</button>
             </StyledHand>
         );
     }

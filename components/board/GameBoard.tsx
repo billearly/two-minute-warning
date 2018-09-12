@@ -21,21 +21,8 @@ const GameBoard: React.SFC = () => {
             <ScoreBoard />
 
             <GameBoardWrapper>
-                <TeamSide>
-                    <CardSlot playerPosition={PlayerPosition.CB} />
-                    <CardSlot playerPosition={PlayerPosition.DE} />
-                    <CardSlot playerPosition={PlayerPosition.LB} />
-                    <CardSlot playerPosition={PlayerPosition.DT} />
-                    <CardSlot playerPosition={PlayerPosition.S} />
-                </TeamSide>
-                
-                <TeamSide>
-                    <CardSlot playerPosition={PlayerPosition.WR} />
-                    <CardSlot playerPosition={PlayerPosition.TE} />
-                    <CardSlot playerPosition={PlayerPosition.QB} />
-                    <CardSlot playerPosition={PlayerPosition.RB} />
-                    <CardSlot playerPosition={PlayerPosition.WR} />
-                </TeamSide>
+                <TeamSide />
+                <TeamSide />
 
                 <PlayCardArea>
                     <CardSlot playerPosition={PlayerPosition.WR} />

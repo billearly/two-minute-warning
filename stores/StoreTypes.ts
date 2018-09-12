@@ -1,7 +1,8 @@
 enum StoreType {
     SCOREBOARD = "ScoreBoardStore",
     DECKSTORE = "DeckStore",
-    HANDSTORE = "HandStore"
+    HANDSTORE = "HandStore",
+    INPLAYSTORE = "InPlayStore"
 };
 
 export default StoreType;
