@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import CardBase from './CardBase';
 import { IPlay } from '../../model';
-import { Component } from 'react';
+import { ColorAccent } from './ColorAccent';
 
 const PlayTitle = styled.p`
-    color: white;
-
     font-weight: bold;
     margin-top: 0;
     position: relative;
@@ -13,28 +11,9 @@ const PlayTitle = styled.p`
 `;
 
 const PlayDescription = styled.p`
-    color: white;
     font-size: 0.8em;
-    
     position: relative;
     z-index: 1;
-`;
-
-const ColorAccent = styled.div`
-    background-color: #E85558;
-    height: 80%;
-    width: 150%;
-
-    position: absolute;
-    bottom: -15%;
-    left: -30%;
-
-    transform: rotate(12deg);
-
-    &:first-of-type {
-        background-color: gray;
-        bottom: 30%;
-    }
 `;
 
 export const PlayCard: React.SFC<IPlay> = ({
@@ -54,8 +33,7 @@ export const PlayCard: React.SFC<IPlay> = ({
             <PlayDescription>{description}</PlayDescription>
             <PlayDescription>Difficulty: {difficulty}</PlayDescription>
 
-            <ColorAccent />
-            <ColorAccent />
+            <ColorAccent color='#E85558'/>
         </CardBase>
     );
 };

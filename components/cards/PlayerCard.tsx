@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { IPlayer } from '../../model';
 import CardBase from './CardBase';
+import { ColorAccent } from './ColorAccent';
 
 interface IProps {
     playerInfo: IPlayer
@@ -34,6 +35,8 @@ const PlayerPos = styled.p`
 
 const AttributeWrapper = styled.div`
     padding-top: 0.3em;
+    position: relative;
+    z-index: 1;
 `;
 
 const PlayerAttribute = styled.p`
@@ -41,29 +44,25 @@ const PlayerAttribute = styled.p`
     text-align: center;
 `;
 
-export class PlayerCard extends Component<IProps> {
-    constructor(props) {
-        super(props);
-    }
+export const PlayerCard: React.SFC<IProps> = ({ playerInfo }) => {
+    return (
+        <CardBase>
+            <CardHeader>
+                <div>
+                    <PlayerName>{playerInfo.firstName}</PlayerName>
+                    <PlayerName>{playerInfo.lastName}</PlayerName>
+                </div>
+                
+                <PlayerPos>{playerInfo.position}</PlayerPos>
+            </CardHeader>
 
-    render() {
-        return (
-            <CardBase>
-                <CardHeader>
-                    <div>
-                        <PlayerName>{this.props.playerInfo.firstName}</PlayerName>
-                        <PlayerName>{this.props.playerInfo.lastName}</PlayerName>
-                    </div>
-                    
-                    <PlayerPos>{this.props.playerInfo.position}</PlayerPos>
-                </CardHeader>
-    
-                <AttributeWrapper>
-                    <PlayerAttribute>Strength: {this.props.playerInfo.strength}</PlayerAttribute>
-                    <PlayerAttribute>Speed: {this.props.playerInfo.speed}</PlayerAttribute>
-                    <PlayerAttribute>Endurance: {this.props.playerInfo.endurance}</PlayerAttribute>
-                </AttributeWrapper>
-            </CardBase>
-        );
-    }
+            <AttributeWrapper>
+                <PlayerAttribute>Strength: {playerInfo.strength}</PlayerAttribute>
+                <PlayerAttribute>Speed: {playerInfo.speed}</PlayerAttribute>
+                <PlayerAttribute>Endurance: {playerInfo.endurance}</PlayerAttribute>
+            </AttributeWrapper>
+
+            <ColorAccent color='#3EBDE8'/>
+        </CardBase>
+    );
 }

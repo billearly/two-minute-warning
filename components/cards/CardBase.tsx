@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 const CardBase = styled.div`
+    color: white;
     font-family: sans-serif;
     font-size: 1em;
-    background-color: white;
+    background-color: gray;
     display: inline-block;
     margin: 0.6em;
     padding: 0.9em;
