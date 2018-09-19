@@ -6,6 +6,7 @@ import { HandStore, DeckStore, InPlayStore } from '../../stores';
 import { PlayerCard, PlayCard } from '../cards';
 import { IPlay, IPlayer } from 'model';
 import { CardType, PlayerPosition } from '../../enum';
+import theme from '../theme/main';
 
 interface IProps {
     HandStore?: HandStore;
@@ -18,7 +19,7 @@ const StyledHand = styled.div`
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: ${props => props.theme.colorBlue};
+    background-color: ${theme.colorBlue};
 `;
 
 @inject(StoreType.HANDSTORE)

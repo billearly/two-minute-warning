@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { PlayerPosition } from '../../enum';
 import CardBase from './CardBase';
+import theme from '../theme/main';
 
 interface ICardSlotProps {
     playerPosition: PlayerPosition
@@ -9,7 +10,7 @@ interface ICardSlotProps {
 
 const StyledCardSlot = styled(CardBase)`
     background-color: transparent;
-    border: 1px dashed ${props => props.theme.colorBlackTransparent};
+    border: 1px dashed ${theme.colorBlackTransparent};
     box-shadow: none;
 
     display: flex;
@@ -24,12 +25,12 @@ const StyledCardSlot = styled(CardBase)`
 
 const CardSlotLabel = styled.span`
     text-align: center;
-    color: ${props => props.theme.colorBlackTransparent};
+    color: ${theme.colorBlackTransparent};
 
     margin: 0 auto;
     padding: 0.5em 1em;
 
-    border: 1px dashed ${props => props.theme.colorBlackTransparent};
+    border: 1px dashed ${theme.colorBlackTransparent};
     border-radius: 0.2em;
 `;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import theme from '../theme/main';
 
 interface ILinkProps {
     linkText: string;
@@ -17,7 +18,7 @@ const SkipContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
-    color: ${props => props.theme.colorBlue};
+    color: ${theme.colorBlue};
 `;
 
 const LinkWrapper: React.SFC<ILinkProps> = ({ linkText }) => {

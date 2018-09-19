@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../theme/main';
 
 const CardBase = styled.div`
     color: white;
@@ -8,8 +9,8 @@ const CardBase = styled.div`
     display: inline-block;
     margin: 0.6em;
     padding: 0.9em;
-    box-shadow: ${props => props.theme.boxShadow};
-    border-radius: ${props => props.theme.borderRadius};
+    box-shadow: ${theme.boxShadow};
+    border-radius: ${theme.borderRadius};
     width: 7.5em;
     height: 11em;
     position: relative;
@@ -21,7 +22,7 @@ const CardBase = styled.div`
         cursor: pointer;
     }
 
-    transition: box-shadow ${props => props.theme.quickTransition};
+    transition: box-shadow ${theme.quickTransition};
 `;
 
 export default CardBase;
