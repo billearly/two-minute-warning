@@ -5,7 +5,8 @@ import CardBase from './CardBase';
 import { ColorAccent } from './ColorAccent';
 
 interface IProps {
-    playerInfo: IPlayer
+    playerInfo: IPlayer;
+    isInPlay?: boolean;
 }
 
 const CardHeader = styled.div`
@@ -44,9 +45,9 @@ const PlayerAttribute = styled.p`
     text-align: center;
 `;
 
-export const PlayerCard: React.SFC<IProps> = ({ playerInfo }) => {
+export const PlayerCard: React.SFC<IProps> = ({ playerInfo, isInPlay }) => {
     return (
-        <CardBase>
+        <CardBase isInPlay={isInPlay}>
             <CardHeader>
                 <div>
                     <PlayerName>{playerInfo.firstName}</PlayerName>

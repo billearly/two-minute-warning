@@ -12,6 +12,8 @@ const StyledCardSlot = styled(CardBase)`
     background-color: transparent;
     border: 1px dashed ${theme.colorBlackTransparent};
     box-shadow: none;
+    padding: 0;
+    overflow: visible;
 
     display: flex;
     flex-direction: column;
@@ -37,8 +39,7 @@ const CardSlotLabel = styled.span`
 export const CardSlot: React.SFC<ICardSlotProps> = ({ playerPosition, children }) => {
     return (
         <StyledCardSlot>
-            <CardSlotLabel>{playerPosition}</CardSlotLabel>
-            {children}
+            {children || <CardSlotLabel>{playerPosition}</CardSlotLabel>}
         </StyledCardSlot>
     );
 };

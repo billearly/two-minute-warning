@@ -39,6 +39,7 @@ export class TeamSide extends Component<IProps> {
             return (
                 <PlayerCard
                     playerInfo={player}
+                    isInPlay={true}
                 />
             );
         }
