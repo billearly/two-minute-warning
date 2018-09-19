@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import { ScoreBoardStore } from '../../stores';
 import StoreTypes from '../../stores/StoreTypes';
+import theme from '../theme/main';
 
 interface IProps {
     ScoreBoardStore?: ScoreBoardStore
@@ -17,7 +18,7 @@ const StyledScoreBoard = styled.div`
     width: 30rem;
     padding: 0.5rem;
     margin-top: 1rem;
-    border-radius: ${props => props.theme.borderRadius};
+    border-radius: ${theme.borderRadius};
 `;
 
 const ScoreboardSection = styled.span`

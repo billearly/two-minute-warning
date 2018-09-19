@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import { DeckStore } from '../../stores';
 import StoreTypes from '../../stores/StoreTypes';
+import theme from '../theme/main';
 
 interface IProps {
     DeckStore?: DeckStore
@@ -19,10 +20,10 @@ const PlayCardDeckStyled = styled.div`
 
     color: white;
     text-align: center;
-    background-color: ${props => props.theme.colorBlue};
-    border-top-left-radius: ${props => props.theme.borderRadius};
-    border-top-right-radius: ${props => props.theme.borderRadius};
-    box-shadow: ${props => props.theme.boxShadow};
+    background-color: ${theme.colorBlue};
+    border-top-left-radius: ${theme.borderRadius};
+    border-top-right-radius: ${theme.borderRadius};
+    box-shadow: ${theme.boxShadow};
 
     pointer-events: none;
 `;

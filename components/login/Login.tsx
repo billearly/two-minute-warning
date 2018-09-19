@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../theme/main';
 
 const LoginHeader = styled.div`
     padding-bottom: 1.5em;
@@ -31,19 +32,19 @@ const Input = styled.input`
     width: 100%;
 
     border: none;
-    border-bottom: 1px solid ${props => props.theme.colorBlue};
+    border-bottom: 1px solid ${theme.colorBlue};
 
     ::placeholder {
-        color: ${props => props.theme.colorBlue};
+        color: ${theme.colorBlue};
     }
 `;
 
 const Button = styled.button`
     display: inline-block;
-    color: ${props => props.theme.colorBlue};
+    color: ${theme.colorBlue};
     font-size: 1em;
     padding: 0.25em 1em;
-    border: 2px solid ${props => props.theme.colorBlue};
+    border: 2px solid ${theme.colorBlue};
     border-radius: 3px;
     background-color: transparent;
     cursor: pointer;

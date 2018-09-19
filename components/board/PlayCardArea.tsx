@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../theme/main';
 
 const PlayCardAreaWrapper = styled.aside`
-    background-color: ${props => props.theme.colorWhiteTransparent};
+    background-color: ${theme.colorWhiteTransparent};
     position: absolute;
     right: 0;
     top: 0;
@@ -19,7 +20,7 @@ const PlayCardAreaWrapper = styled.aside`
         opacity: 1;
     }
 
-    transition: opacity ${props => props.theme.quickTransition};
+    transition: opacity ${theme.quickTransition};
 `;
 
 export const PlayCardArea: React.SFC = ({ children }) => {
