@@ -18,6 +18,7 @@ const StyledCardSlot = styled(CardBase)`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     &:hover {
         box-shadow: none;

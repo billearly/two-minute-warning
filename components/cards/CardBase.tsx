@@ -5,7 +5,7 @@ interface IProps {
     isInPlay?: boolean;
 }
 
-const CardBase = styled.div`
+const CardBase = styled.button`
     color: white;
     font-family: sans-serif;
     font-size: 1em;
@@ -15,6 +15,7 @@ const CardBase = styled.div`
     padding: 0.9em;
     box-shadow: ${theme.boxShadow};
     border-radius: ${theme.borderRadius};
+    border: none;
     width: 7.5em;
     height: 11em;
     position: relative;
