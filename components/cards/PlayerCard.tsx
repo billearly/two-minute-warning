@@ -7,6 +7,7 @@ import { ColorAccent } from './ColorAccent';
 interface IProps {
     playerInfo: IPlayer;
     isInPlay?: boolean;
+    handleClick?: (e: object) => void;
 }
 
 const CardHeader = styled.div`
@@ -22,6 +23,7 @@ const PlayerName = styled.p`
     font-size: 1em;
     font-weight: bold;
     margin: 0;
+    text-align: left;
 
     &:last-child {
         padding-top: 0.3em;
@@ -45,9 +47,13 @@ const PlayerAttribute = styled.p`
     text-align: center;
 `;
 
-export const PlayerCard: React.SFC<IProps> = ({ playerInfo, isInPlay }) => {
+export const PlayerCard: React.SFC<IProps> = ({
+    playerInfo,
+    isInPlay,
+    handleClick
+}) => {
     return (
-        <CardBase isInPlay={isInPlay}>
+        <CardBase isInPlay={isInPlay} onClick={handleClick}>
             <CardHeader>
                 <div>
                     <PlayerName>{playerInfo.firstName}</PlayerName>

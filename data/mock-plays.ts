@@ -3,6 +3,7 @@ import { PlayerPosition, PlayType, CardType } from '../enum';
 
 export const mockPlays: IPlay[] = [
     {
+        id: '93yfih9843whfh',
         cardType: CardType.PLAY,
         playType: PlayType.PASS,
         source: PlayerPosition.QB,
@@ -12,6 +13,7 @@ export const mockPlays: IPlay[] = [
         difficulty: 3.2
     },
     {
+        id: '7654gbfvujn923',
         cardType: CardType.PLAY,
         playType: PlayType.RUN,
         source: PlayerPosition.QB,
@@ -21,6 +23,7 @@ export const mockPlays: IPlay[] = [
         difficulty: 2.6
     },
     {
+        id: '094erngv834nf',
         cardType: CardType.PLAY,
         playType: PlayType.PASS,
         source: PlayerPosition.QB,

@@ -1,6 +1,7 @@
 import { PlayerPosition, PlayType, CardType } from '../enum';
 
 export interface IPlay {
+    id: string;
     cardType: CardType;
     playType: PlayType;
     source: PlayerPosition;

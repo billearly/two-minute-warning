@@ -13,6 +13,9 @@ export class InPlayStore {
     wr: IPlayer;
 
     @observable
+    sr: IPlayer;
+
+    @observable
     te: IPlayer;
 
     @observable
@@ -48,6 +51,10 @@ export class InPlayStore {
 
             case PlayerPosition.WR:
                 this.wr = player;
+                break;
+
+            case PlayerPosition.SR:
+                this.sr = player;
                 break;
 
             case PlayerPosition.TE:

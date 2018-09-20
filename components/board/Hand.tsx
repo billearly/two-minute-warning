@@ -5,7 +5,7 @@ import StoreType from '../../stores/StoreTypes';
 import { HandStore, DeckStore, InPlayStore } from '../../stores';
 import { PlayerCard, PlayCard } from '../cards';
 import { IPlay, IPlayer } from 'model';
-import { CardType, PlayerPosition } from '../../enum';
+import { CardType } from '../../enum';
 import theme from '../theme/main';
 
 interface IProps {
@@ -41,10 +41,16 @@ export class Hand extends Component<IProps> {
         this.props.HandStore.addCard(drawnCard);
     }
 
+    addCardToTeam(player: IPlayer): void {
+        this.props.InPlayStore.addCard(player);
+        this.props.HandStore.removeCard(player);
+    }
+
     generatePlayCard(play: IPlay, index: number): JSX.Element {
         return (
             <PlayCard
                 key={index}
+                id={play.id}
                 cardType={play.cardType}
                 playType={play.playType}
                 source={play.source}
@@ -56,27 +62,12 @@ export class Hand extends Component<IProps> {
         );
     }
 
-    addCardToTeam(position: PlayerPosition): void {
-        //temp...maybe
-        for (var i = 0; i < this.props.HandStore.cards.length; i++) {
-            var card = this.props.HandStore.cards[i];
-            if (card.cardType === CardType.PLAYER) {
-                const playerCard = card as IPlayer;
-
-                if (playerCard.position === position) {
-                    // the magic. Not actually removing the card from HandStore yet
-                    this.props.InPlayStore.addCard(playerCard);
-                    break;
-                }
-            }
-        }
-    }
-
     generatePlayerCard(player: IPlayer, index: number): JSX.Element {
         return (
             <PlayerCard
                 key={index}
                 playerInfo={player}
+                handleClick={() => this.addCardToTeam(player)}
             />
         );
     }
@@ -98,7 +89,6 @@ export class Hand extends Component<IProps> {
             <StyledHand>
                 {this.renderCards()}
                 <button onClick={this.drawCardFromDeck}>Draw Card</button>
-                <button onClick={() => this.addCardToTeam(PlayerPosition.QB)}>Play Card</button>
             </StyledHand>
         );
     }

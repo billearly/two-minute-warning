@@ -48,15 +48,25 @@ export class TeamSide extends Component<IProps> {
     render() {
         return (
             <TeamSideStyled>
-                <CardSlot playerPosition={PlayerPosition.WR} />
-                <CardSlot playerPosition={PlayerPosition.TE} />
+                <CardSlot playerPosition={PlayerPosition.WR}>
+                    {this.generateCard(this.props.InPlayStore.wr)}
+                </CardSlot>
+
+                <CardSlot playerPosition={PlayerPosition.TE}>
+                    {this.generateCard(this.props.InPlayStore.te)}
+                </CardSlot>
                 
                 <CardSlot playerPosition={PlayerPosition.QB}>
                     {this.generateCard(this.props.InPlayStore.qb)}
                 </CardSlot>
                 
-                <CardSlot playerPosition={PlayerPosition.RB} />
-                <CardSlot playerPosition={PlayerPosition.WR} />
+                <CardSlot playerPosition={PlayerPosition.RB}>
+                    {this.generateCard(this.props.InPlayStore.rb)}
+                </CardSlot>
+
+                <CardSlot playerPosition={PlayerPosition.SR}>
+                    {this.generateCard(this.props.InPlayStore.sr)}
+                </CardSlot>
             </TeamSideStyled>
         );
     }

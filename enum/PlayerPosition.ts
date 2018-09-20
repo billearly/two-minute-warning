@@ -2,6 +2,7 @@ export enum PlayerPosition {
     // Offense
     QB = 'QB',
     WR = 'WR',
+    SR = 'SR',
     RB = 'RB',
     TE = 'TE',
 
