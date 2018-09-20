@@ -14,9 +14,9 @@ export class DeckStore {
         const flip = Math.floor(Math.random() * 2);
 
         if (flip === 1) {
-            return this.drawPlayCard();
+            return this.drawPlayCard() || this.drawPlayerCard();
         } else {
-            return this.drawPlayerCard();
+            return this.drawPlayerCard() || this.drawPlayCard();
         }
     }
 
