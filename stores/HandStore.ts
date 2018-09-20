@@ -32,8 +32,6 @@ export class HandStore {
 
 /*
 Unresolved issues:
-- The CardSlot is a button so we end up with nested buttons (CardSlot shouldn't inherit from card base anymore)
 - Both TeamSides are offense
 - Need to do something with the Draw Card button
-- The draw card bug still exists (it may decide to draw from an empty array)
 */

@@ -5,7 +5,7 @@ import { InPlayStore } from '../../stores';
 import { PlayerPosition } from '../../enum';
 import { IPlayer } from '../../model';
 import { PlayerCard } from '../cards';
-import { CardSlot } from '../cards'
+import { Slot } from './Slot'
 import StoreTypes from '../../stores/StoreTypes';
 
 interface IProps {
@@ -48,25 +48,25 @@ export class TeamSide extends Component<IProps> {
     render() {
         return (
             <TeamSideStyled>
-                <CardSlot playerPosition={PlayerPosition.WR}>
+                <Slot playerPosition={PlayerPosition.WR}>
                     {this.generateCard(this.props.InPlayStore.wr)}
-                </CardSlot>
+                </Slot>
 
-                <CardSlot playerPosition={PlayerPosition.TE}>
+                <Slot playerPosition={PlayerPosition.TE}>
                     {this.generateCard(this.props.InPlayStore.te)}
-                </CardSlot>
+                </Slot>
                 
-                <CardSlot playerPosition={PlayerPosition.QB}>
+                <Slot playerPosition={PlayerPosition.QB}>
                     {this.generateCard(this.props.InPlayStore.qb)}
-                </CardSlot>
+                </Slot>
                 
-                <CardSlot playerPosition={PlayerPosition.RB}>
+                <Slot playerPosition={PlayerPosition.RB}>
                     {this.generateCard(this.props.InPlayStore.rb)}
-                </CardSlot>
+                </Slot>
 
-                <CardSlot playerPosition={PlayerPosition.SR}>
+                <Slot playerPosition={PlayerPosition.SR}>
                     {this.generateCard(this.props.InPlayStore.sr)}
-                </CardSlot>
+                </Slot>
             </TeamSideStyled>
         );
     }

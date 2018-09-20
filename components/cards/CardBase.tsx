@@ -11,13 +11,13 @@ const CardBase = styled.button`
     font-size: 1em;
     background-color: gray;
     display: inline-block;
-    margin: ${(props: IProps) => props.isInPlay ? '0' : '0.6em'};
+    margin: ${(props: IProps) => props.isInPlay ? '0' : theme.cardMargin};
     padding: 0.9em;
     box-shadow: ${theme.boxShadow};
     border-radius: ${theme.borderRadius};
     border: none;
-    width: 7.5em;
-    height: 11em;
+    width: ${theme.cardWidth};
+    height: ${theme.cardHeight};
     position: relative;
     overflow: hidden;
 

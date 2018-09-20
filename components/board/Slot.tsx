@@ -1,32 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PlayerPosition } from '../../enum';
-import CardBase from './CardBase';
+import { PlayerPosition } from 'enum';
 import theme from '../theme/main';
 
-interface ICardSlotProps {
+interface IProps {
     playerPosition: PlayerPosition
 }
 
-const StyledCardSlot = styled(CardBase)`
+const StyledSlot = styled.div`
+    width: ${theme.cardWidth};
+    height: ${theme.cardHeight};
+    margin: ${theme.cardMargin};
+
     background-color: transparent;
     border: 1px dashed ${theme.colorBlackTransparent};
-    box-shadow: none;
-    padding: 0;
+    border-radius: ${theme.borderRadius};
     overflow: visible;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    &:hover {
-        box-shadow: none;
-        transform: none;
-    }
 `;
 
-const CardSlotLabel = styled.span`
+const SlotLabel = styled.span`
     text-align: center;
     color: ${theme.colorBlackTransparent};
 
@@ -37,10 +33,10 @@ const CardSlotLabel = styled.span`
     border-radius: 0.2em;
 `;
 
-export const CardSlot: React.SFC<ICardSlotProps> = ({ playerPosition, children }) => {
+export const Slot: React.SFC<IProps> = ({ playerPosition, children }) => {
     return (
-        <StyledCardSlot>
-            {children || <CardSlotLabel>{playerPosition}</CardSlotLabel>}
-        </StyledCardSlot>
+        <StyledSlot>
+            {children || <SlotLabel>{playerPosition}</SlotLabel>}
+        </StyledSlot>
     );
 };

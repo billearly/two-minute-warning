@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardSlot } from '../cards';
+import { Slot } from './Slot';
 import { TeamSide } from './TeamSide';
 import { PlayCardArea } from './PlayCardArea';
 import { PlayCardDeck } from './PlayCardDeck';
@@ -25,9 +25,9 @@ const GameBoard: React.SFC = () => {
                 <TeamSide />
 
                 <PlayCardArea>
-                    <CardSlot playerPosition={PlayerPosition.WR} />
-                    <CardSlot playerPosition={PlayerPosition.WR} />
-                    <CardSlot playerPosition={PlayerPosition.WR} />
+                    <Slot playerPosition={PlayerPosition.WR} />
+                    <Slot playerPosition={PlayerPosition.WR} />
+                    <Slot playerPosition={PlayerPosition.WR} />
                 </PlayCardArea>
 
                 <Hand />
