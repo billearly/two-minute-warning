@@ -2,7 +2,7 @@ import { Component } from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import { InPlayStore } from '../../stores';
-import { PlayerPosition } from '../../enum';
+import { PlayerPosition, Side } from '../../enum';
 import { IPlayer } from '../../model';
 import { PlayerCard } from '../cards';
 import { Slot } from './Slot'
@@ -10,6 +10,7 @@ import StoreTypes from '../../stores/StoreTypes';
 
 interface IProps {
     InPlayStore?: InPlayStore;
+    side: Side;
 }
 
 const TeamSideStyled = styled.div`
@@ -31,7 +32,46 @@ export class TeamSide extends Component<IProps> {
     constructor(props) {
         super(props);
 
+        if(this.props.side === Side.DEFENSE)
+
         this.generateCard = this.generateCard.bind(this);
+    }
+
+    generateSide(side: Side): JSX.Element {
+        switch (side) {
+            case Side.OFFENSE:
+                return (
+                    <TeamSideStyled>
+                        {this.generateSlot(PlayerPosition.WR)}
+                        {this.generateSlot(PlayerPosition.TE)}
+                        {this.generateSlot(PlayerPosition.QB)}
+                        {this.generateSlot(PlayerPosition.RB)}
+                        {this.generateSlot(PlayerPosition.SR)}
+                    </TeamSideStyled>
+                );
+
+            case Side.DEFENSE:
+                return (
+                    <TeamSideStyled>
+                        {this.generateSlot(PlayerPosition.CB)}
+                        {this.generateSlot(PlayerPosition.LB)}
+                        {this.generateSlot(PlayerPosition.DE)}
+                        {this.generateSlot(PlayerPosition.DT)}
+                        {this.generateSlot(PlayerPosition.S)}
+                    </TeamSideStyled>
+                );
+
+            default:
+                throw new Error(`${side} is not a valid side value`);
+        }
+    }
+
+    generateSlot(position: PlayerPosition): JSX.Element {
+        return (
+            <Slot playerPosition={position}>
+                {this.generateCard(this.props.InPlayStore[position])}
+            </Slot>
+        );
     }
 
     generateCard(player: IPlayer): JSX.Element {
@@ -46,28 +86,6 @@ export class TeamSide extends Component<IProps> {
     }
 
     render() {
-        return (
-            <TeamSideStyled>
-                <Slot playerPosition={PlayerPosition.WR}>
-                    {this.generateCard(this.props.InPlayStore.wr)}
-                </Slot>
-
-                <Slot playerPosition={PlayerPosition.TE}>
-                    {this.generateCard(this.props.InPlayStore.te)}
-                </Slot>
-                
-                <Slot playerPosition={PlayerPosition.QB}>
-                    {this.generateCard(this.props.InPlayStore.qb)}
-                </Slot>
-                
-                <Slot playerPosition={PlayerPosition.RB}>
-                    {this.generateCard(this.props.InPlayStore.rb)}
-                </Slot>
-
-                <Slot playerPosition={PlayerPosition.SR}>
-                    {this.generateCard(this.props.InPlayStore.sr)}
-                </Slot>
-            </TeamSideStyled>
-        );
+        return this.generateSide(this.props.side);
     }
 }

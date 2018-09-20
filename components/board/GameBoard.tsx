@@ -6,8 +6,7 @@ import { PlayCardArea } from './PlayCardArea';
 import { PlayCardDeck } from './PlayCardDeck';
 import { Hand } from './Hand';
 import { ScoreBoard } from '../hud';
-
-import { PlayerPosition } from '../../enum';
+import { PlayerPosition, Side } from '../../enum';
 
 const GameBoardWrapper = styled.div`
     height: 100%;
@@ -21,8 +20,8 @@ const GameBoard: React.SFC = () => {
             <ScoreBoard />
 
             <GameBoardWrapper>
-                <TeamSide />
-                <TeamSide />
+                <TeamSide side={Side.DEFENSE} />
+                <TeamSide side={Side.OFFENSE} />
 
                 <PlayCardArea>
                     <Slot playerPosition={PlayerPosition.WR} />

@@ -19,7 +19,6 @@ export class HandStore {
     @action
     removeCard = (card: (IPlay|IPlayer)): void => {
         if (card) {
-            // need to figure out the index of the card
             for (var i = 0; i < this.cards.length; i++) {
                 if (card.id === this.cards[i].id) {
                     this.cards.splice(i, 1);
@@ -29,9 +28,3 @@ export class HandStore {
         }
     }
 }
-
-/*
-Unresolved issues:
-- Both TeamSides are offense
-- Need to do something with the Draw Card button
-*/

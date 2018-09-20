@@ -4,19 +4,34 @@ import { CardType, PlayerPosition } from '../enum';
 
 export class InPlayStore {
     @observable
-    qb: IPlayer;
+    QB: IPlayer;
 
     @observable
-    rb: IPlayer;
+    RB: IPlayer;
 
     @observable
-    wr: IPlayer;
+    WR: IPlayer;
 
     @observable
-    sr: IPlayer;
+    SR: IPlayer;
 
     @observable
-    te: IPlayer;
+    TE: IPlayer;
+
+    @observable
+    CB: IPlayer;
+
+    @observable
+    DE: IPlayer;
+
+    @observable
+    DT: IPlayer;
+
+    @observable
+    LB: IPlayer;
+
+    @observable
+    S: IPlayer;
 
     @observable
     play: IPlay;
@@ -38,31 +53,6 @@ export class InPlayStore {
     }
 
     private assignToPlayerSlot (player: IPlayer): void {
-        // this[player.position] = player; ???
-
-        switch(player.position) {
-            case PlayerPosition.QB:
-                this.qb = player;
-                break;
-
-            case PlayerPosition.RB:
-                this.rb = player;
-                break;
-
-            case PlayerPosition.WR:
-                this.wr = player;
-                break;
-
-            case PlayerPosition.SR:
-                this.sr = player;
-                break;
-
-            case PlayerPosition.TE:
-                this.te = player;
-                break;
-
-            default:
-                throw new Error(`${player.position} is not a valid position`);
-        }
+        this[player.position] = player;
     }
 }
