@@ -30,15 +30,10 @@ export class Hand extends Component<IProps> {
     constructor(props) {
         super(props);
 
-        this.drawCardFromDeck = this.drawCardFromDeck.bind(this);
+        this.addCardToTeam = this.addCardToTeam.bind(this);
         this.renderCards = this.renderCards.bind(this);
         this.generatePlayCard = this.generatePlayCard.bind(this);
         this.generatePlayerCard = this.generatePlayerCard.bind(this);
-    }
-
-    drawCardFromDeck(): void {
-        const drawnCard = this.props.DeckStore.drawCard();
-        this.props.HandStore.addCard(drawnCard);
     }
 
     addCardToTeam(player: IPlayer): void {
@@ -88,7 +83,6 @@ export class Hand extends Component<IProps> {
         return (
             <StyledHand>
                 {this.renderCards()}
-                <button onClick={this.drawCardFromDeck}>Draw Card</button>
             </StyledHand>
         );
     }

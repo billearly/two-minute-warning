@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx'
 import { IPlayer, IPlay } from '../model';
-import { CardType, PlayerPosition } from '../enum';
+import { CardType } from '../enum';
 
 export class InPlayStore {
     @observable
