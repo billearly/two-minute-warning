@@ -59,7 +59,7 @@ export const Login: React.SFC = () => {
                 
                 <form>
                     <Input id='email' type='email' placeholder='Email' />
-                    <Input type='password' placeholder='Password' />
+                    <Input id='password' type='password' placeholder='Password' />
 
                     <Button >Go</Button>
                 </form>

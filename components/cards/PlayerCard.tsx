@@ -56,17 +56,17 @@ export const PlayerCard: React.SFC<IProps> = ({
         <CardBase isInPlay={isInPlay} onClick={handleClick}>
             <CardHeader>
                 <div>
-                    <PlayerName>{playerInfo.firstName}</PlayerName>
-                    <PlayerName>{playerInfo.lastName}</PlayerName>
+                    <PlayerName data-target='first-name'>{playerInfo.firstName}</PlayerName>
+                    <PlayerName data-target='last-name'>{playerInfo.lastName}</PlayerName>
                 </div>
                 
-                <PlayerPos>{playerInfo.position}</PlayerPos>
+                <PlayerPos data-target='position'>{playerInfo.position}</PlayerPos>
             </CardHeader>
 
             <AttributeWrapper>
-                <PlayerAttribute>Strength: {playerInfo.strength}</PlayerAttribute>
-                <PlayerAttribute>Speed: {playerInfo.speed}</PlayerAttribute>
-                <PlayerAttribute>Endurance: {playerInfo.endurance}</PlayerAttribute>
+                <PlayerAttribute data-target='speed'>Strength: {playerInfo.strength}</PlayerAttribute>
+                <PlayerAttribute data-target='strength'>Speed: {playerInfo.speed}</PlayerAttribute>
+                <PlayerAttribute data-target='endurance'>Endurance: {playerInfo.endurance}</PlayerAttribute>
             </AttributeWrapper>
 
             <ColorAccent color='#3EBDE8'/>
