@@ -13,26 +13,62 @@ const StyledScoreBoard = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    background-color: white;
-    height: 2.5rem;
-    width: 30rem;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    border-radius: ${theme.borderRadius};
+    display: flex;
 `;
 
-const ScoreboardSection = styled.span`
-    display: inline-flex;
-    flex-direction: column;
+const GameData = styled.div`
+    width: 9rem;
+    height: 2rem;
+    background-color: white;
+    box-shadow: ${theme.boxShadow};
+
+    display: flex;
     justify-content: center;
-    width: calc(100% / 3);
-    height: 100%;
-    border-right: 1px solid lightgray;
-    text-align: center;
-    font-weight: bold;
+    align-items: center;
+
+    &:first-child {
+        border-bottom-left-radius: ${theme.borderRadius};
+    }
 
     &:last-child {
-        border-right: none;
+        border-bottom-right-radius: ${theme.borderRadius};
+    }
+`;
+
+const Scores = styled.div`
+    background-color: white;
+    box-shadow: ${theme.boxShadow};
+    border-bottom-left-radius: ${theme.borderRadius};
+    border-bottom-right-radius: ${theme.borderRadius};
+
+    display: flex;
+    overflow: hidden;
+    z-index: 5;
+`;
+
+const TeamScore = styled.p`
+    padding: 0.9rem;
+    margin: 0;
+    width: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:first-child {
+        border-right: 1px solid lightgray;
+    }
+
+    span {
+        &:first-child {
+            font-size: 0.75em;
+            padding-bottom: 0.2rem;
+        }
+
+        &:last-child {
+            font-size: 1.5em;
+        }
     }
 `;
 
@@ -42,13 +78,25 @@ export class ScoreBoard extends Component<IProps> {
     render() {
         return (
             <StyledScoreBoard>
-                <ScoreboardSection>{this.props.ScoreBoardStore.getScore}</ScoreboardSection>
-                <ScoreboardSection>{this.props.ScoreBoardStore.getTimeLeft}</ScoreboardSection>
-                <ScoreboardSection>{this.props.ScoreBoardStore.getCurrentDown}</ScoreboardSection>
+                <GameData>
+                    {this.props.ScoreBoardStore.getTimeLeft}
+                </GameData>
 
-                <button onClick={this.props.ScoreBoardStore.makeRandomDown}>Random Down</button>
-                <button onClick={this.props.ScoreBoardStore.resetDowns}>Reset Downs</button>
-                <button onClick={this.props.ScoreBoardStore.startGame}>Start Game</button>
+                <Scores>
+                    <TeamScore>
+                        <span>NE</span>
+                        <span>{this.props.ScoreBoardStore.homeScore}</span>
+                    </TeamScore>
+
+                    <TeamScore>
+                        <span>CAR</span>
+                        <span>{this.props.ScoreBoardStore.awayScore}</span>
+                    </TeamScore>
+                </Scores>
+
+                <GameData>
+                    {this.props.ScoreBoardStore.getCurrentDown}
+                </GameData>
             </StyledScoreBoard>
         );
     }
