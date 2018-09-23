@@ -79,23 +79,31 @@ export class ScoreBoard extends Component<IProps> {
         return (
             <StyledScoreBoard>
                 <GameData>
-                    {this.props.ScoreBoardStore.getTimeLeft}
+                    <span data-target='game-clock'>
+                        {this.props.ScoreBoardStore.getTimeLeft}
+                    </span>
                 </GameData>
 
                 <Scores>
                     <TeamScore>
                         <span>NE</span>
-                        <span>{this.props.ScoreBoardStore.homeScore}</span>
+                        <span data-target='score-home'>
+                            {this.props.ScoreBoardStore.homeScore}
+                        </span>
                     </TeamScore>
 
                     <TeamScore>
                         <span>CAR</span>
-                        <span>{this.props.ScoreBoardStore.awayScore}</span>
+                        <span data-target='score-away'>
+                            {this.props.ScoreBoardStore.awayScore}
+                        </span>
                     </TeamScore>
                 </Scores>
 
                 <GameData>
-                    {this.props.ScoreBoardStore.getCurrentDown}
+                    <span data-target='current-down'>
+                        {this.props.ScoreBoardStore.getCurrentDown}
+                    </span>
                 </GameData>
             </StyledScoreBoard>
         );
