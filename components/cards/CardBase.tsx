@@ -6,18 +6,16 @@ interface IProps {
 }
 
 const CardBase = styled.button`
-    color: white;
-    font-family: sans-serif;
     font-size: 1em;
+    color: white;
     background-color: gray;
-    display: inline-block;
+    width: ${theme.cardWidth};
+    height: ${theme.cardHeight};
     margin: ${(props: IProps) => props.isInPlay ? '0' : theme.cardMargin};
     padding: 0.9em;
     box-shadow: ${theme.boxShadow};
     border-radius: ${theme.borderRadius};
     border: none;
-    width: ${theme.cardWidth};
-    height: ${theme.cardHeight};
     position: relative;
     overflow: hidden;
 

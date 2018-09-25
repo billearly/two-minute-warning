@@ -9,9 +9,12 @@ describe('The Player Card Component', () => {
         expect(component.find('p[data-target="first-name"]').text()).toEqual('Test');
         expect(component.find('p[data-target="last-name"]').text()).toEqual('Player');
         expect(component.find('p[data-target="position"]').text()).toEqual('QB');
-        expect(component.find('p[data-target="speed"]').text()).toEqual('Strength: 1');
-        expect(component.find('p[data-target="strength"]').text()).toEqual('Speed: 2');
-        expect(component.find('p[data-target="endurance"]').text()).toEqual('Endurance: 3');
+        expect(component.find('span[data-target="strength-value"]').text()).toEqual('1');
+        expect(component.find('span[data-target="strength-label"]').text()).toEqual('Strength');
+        expect(component.find('span[data-target="speed-value"]').text()).toEqual('2');
+        expect(component.find('span[data-target="speed-label"]').text()).toEqual('Speed');
+        expect(component.find('span[data-target="endurance-value"]').text()).toEqual('3');
+        expect(component.find('span[data-target="endurance-label"]').text()).toEqual('Endurance');
     });
 
     it('should pass clickHandler onto the CardBase', () => {

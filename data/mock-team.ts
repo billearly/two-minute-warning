@@ -8,9 +8,9 @@ export const mockPlayers: IPlayer[] = [
         firstName: 'Bill',
         lastName: 'Early',
         position: PlayerPosition.QB,
-        strength: 10.0,
-        speed: 10.0,
-        endurance: 10.0
+        strength: 4,
+        speed: 4,
+        endurance: 5
     },
     {
         id: '9834ygfuh823hf',
@@ -18,9 +18,9 @@ export const mockPlayers: IPlayer[] = [
         firstName: 'Greg',
         lastName: 'Pease',
         position: PlayerPosition.WR,
-        strength: 7.2,
-        speed: 8.3,
-        endurance: 9.4
+        strength: 3,
+        speed: 4,
+        endurance: 4
     },
     {
         id: '839u4gij5694hg',
@@ -28,9 +28,9 @@ export const mockPlayers: IPlayer[] = [
         firstName: 'Kevin',
         lastName: 'Lee',
         position: PlayerPosition.TE,
-        strength: 9.5,
-        speed: 7.1,
-        endurance: 6.5
+        strength: 4,
+        speed: 2,
+        endurance: 0
     },
     {
         id: '034webnuwuebfcub',
@@ -38,9 +38,9 @@ export const mockPlayers: IPlayer[] = [
         firstName: 'Chris',
         lastName: 'Adley',
         position: PlayerPosition.RB,
-        strength: 9.8,
-        speed: 6.4,
-        endurance: 7.8
+        strength: 4,
+        speed: 1,
+        endurance: 2
     },
     {
         id: '934fnhj9cdjw4',
@@ -48,8 +48,8 @@ export const mockPlayers: IPlayer[] = [
         firstName: 'Jake',
         lastName: 'Smith',
         position: PlayerPosition.SR,
-        strength: 4.2,
-        speed: 9.1,
-        endurance: 7.9
+        strength: 1,
+        speed: 4,
+        endurance: 3
     }
 ];
