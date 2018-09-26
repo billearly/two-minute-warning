@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import { InPlayStore } from '../../stores';
 import { PlayerPosition, Side } from '../../enum';
-import { IPlayer } from '../../model';
-import { PlayerCard } from '../cards';
+import { IPlayer, IPlay } from '../../model';
+import { PlayerCard, PlayCard } from '../cards';
 import { Slot } from './Slot'
 import StoreTypes from '../../stores/StoreTypes';
 
@@ -13,12 +13,18 @@ interface IProps {
     side: Side;
 }
 
-const TeamSideStyled = styled.div`
+const Team = styled.div`
     display: flex;
-    justify-content: center;
+    padding-right: 5rem;
+`;
+
+const TeamSideStyled = styled.div`
     height: 50%;
     width: 70%;
     margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
 
     &:first-child {
         align-items: flex-end;
@@ -34,7 +40,8 @@ export class TeamSide extends Component<IProps> {
 
         if(this.props.side === Side.DEFENSE)
 
-        this.generateCard = this.generateCard.bind(this);
+        this.generatePlayerCard = this.generatePlayerCard.bind(this);
+        this.generatePlayCard = this.generatePlayCard.bind(this);
     }
 
     generateSide(side: Side): JSX.Element {
@@ -42,22 +49,32 @@ export class TeamSide extends Component<IProps> {
             case Side.OFFENSE:
                 return (
                     <TeamSideStyled>
-                        {this.generateSlot(PlayerPosition.WR)}
-                        {this.generateSlot(PlayerPosition.TE)}
-                        {this.generateSlot(PlayerPosition.QB)}
-                        {this.generateSlot(PlayerPosition.RB)}
-                        {this.generateSlot(PlayerPosition.SR)}
+                        <Team>
+                            {this.generateSlot(PlayerPosition.WR)}
+                            {this.generateSlot(PlayerPosition.TE)}
+                            {this.generateSlot(PlayerPosition.QB)}
+                            {this.generateSlot(PlayerPosition.RB)}
+                            {this.generateSlot(PlayerPosition.SR)}
+                        </Team>
+
+                        <Slot label='PLAY'>
+                            {this.generatePlayCard(this.props.InPlayStore.currentPlay)}
+                        </Slot>
                     </TeamSideStyled>
                 );
 
             case Side.DEFENSE:
                 return (
                     <TeamSideStyled>
-                        {this.generateSlot(PlayerPosition.CB)}
-                        {this.generateSlot(PlayerPosition.LB)}
-                        {this.generateSlot(PlayerPosition.DE)}
-                        {this.generateSlot(PlayerPosition.DT)}
-                        {this.generateSlot(PlayerPosition.S)}
+                        <Team>
+                            {this.generateSlot(PlayerPosition.CB)}
+                            {this.generateSlot(PlayerPosition.LB)}
+                            {this.generateSlot(PlayerPosition.DE)}
+                            {this.generateSlot(PlayerPosition.DT)}
+                            {this.generateSlot(PlayerPosition.S)}
+                        </Team>
+
+                        <Slot label='PLAY'/>
                     </TeamSideStyled>
                 );
 
@@ -68,13 +85,13 @@ export class TeamSide extends Component<IProps> {
 
     generateSlot(position: PlayerPosition): JSX.Element {
         return (
-            <Slot playerPosition={position}>
-                {this.generateCard(this.props.InPlayStore[position])}
+            <Slot label={position}>
+                {this.generatePlayerCard(this.props.InPlayStore[position])}
             </Slot>
         );
     }
 
-    generateCard(player: IPlayer): JSX.Element {
+    generatePlayerCard(player: IPlayer): JSX.Element {
         if (player) {
             return (
                 <PlayerCard
@@ -84,6 +101,17 @@ export class TeamSide extends Component<IProps> {
             );
         }
     }
+
+    generatePlayCard(play: IPlay): JSX.Element {
+        if (play) {
+            return (
+                <PlayCard
+                    playInfo={play}
+                    isInPlay={true}
+                />
+            );
+        }
+    }s
 
     render() {
         return this.generateSide(this.props.side);

@@ -3,6 +3,12 @@ import CardBase from './CardBase';
 import { IPlay } from '../../model';
 import { ColorAccent } from './ColorAccent';
 
+interface IProps {
+    playInfo: IPlay;
+    isInPlay?: boolean;
+    handleClick?: (e: object) => void;
+}
+
 const PlayTitle = styled.p`
     font-weight: bold;
     margin-top: 0;
@@ -16,22 +22,19 @@ const PlayDescription = styled.p`
     z-index: 1;
 `;
 
-export const PlayCard: React.SFC<IPlay> = ({
-    playType,
-    source,
-    target,
-    title,
-    description,
-    difficulty
+export const PlayCard: React.SFC<IProps> = ({
+    playInfo,
+    isInPlay,
+    handleClick
 }) => {
     return (
-        <CardBase>
-            <PlayTitle>{title}</PlayTitle>
+        <CardBase isInPlay={isInPlay} onClick={handleClick}>
+            <PlayTitle data-target='play-title'>{playInfo.title}</PlayTitle>
 
-            <PlayDescription>{playType}</PlayDescription>
-            <PlayDescription>{source} to {target}</PlayDescription>
-            <PlayDescription>{description}</PlayDescription>
-            <PlayDescription>Difficulty: {difficulty}</PlayDescription>
+            <PlayDescription data-target='play-type'>{playInfo.playType}</PlayDescription>
+            <PlayDescription data-target='play-positions'>{playInfo.source} to {playInfo.target}</PlayDescription>
+            <PlayDescription data-target='play-description'>{playInfo.description}</PlayDescription>
+            <PlayDescription data-target='play-difficulty'>Difficulty: {playInfo.difficulty}</PlayDescription>
 
             <ColorAccent color='#E85558'/>
         </CardBase>

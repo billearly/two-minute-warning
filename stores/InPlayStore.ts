@@ -34,7 +34,7 @@ export class InPlayStore {
     S: IPlayer;
 
     @observable
-    play: IPlay;
+    currentPlay: IPlay;
 
     @action
     addCard = (card: (IPlay|IPlayer)): void => {
@@ -44,7 +44,7 @@ export class InPlayStore {
                 break;
 
             case CardType.PLAY:
-                this.play = card as IPlay;
+                this.currentPlay = card as IPlay;
                 break;
 
             default:

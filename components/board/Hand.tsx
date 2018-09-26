@@ -36,23 +36,16 @@ export class Hand extends Component<IProps> {
         this.generatePlayerCard = this.generatePlayerCard.bind(this);
     }
 
-    addCardToTeam(player: IPlayer): void {
-        this.props.InPlayStore.addCard(player);
-        this.props.HandStore.removeCard(player);
+    addCardToTeam(card: IPlayer | IPlay): void {
+        this.props.InPlayStore.addCard(card);
+        this.props.HandStore.removeCard(card);
     }
-
     generatePlayCard(play: IPlay, index: number): JSX.Element {
         return (
             <PlayCard
                 key={index}
-                id={play.id}
-                cardType={play.cardType}
-                playType={play.playType}
-                source={play.source}
-                target={play.target}
-                title={play.title}
-                description={play.description}
-                difficulty={play.difficulty}
+                playInfo={play}
+                handleClick={() => this.addCardToTeam(play)}
             />
         );
     }

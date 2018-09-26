@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PlayerPosition } from 'enum';
 import theme from '../theme/main';
 
 interface IProps {
-    playerPosition: PlayerPosition
+    label: string
 }
 
 const StyledSlot = styled.div`
@@ -33,10 +32,10 @@ const SlotLabel = styled.span`
     border-radius: 0.2em;
 `;
 
-export const Slot: React.SFC<IProps> = ({ playerPosition, children }) => {
+export const Slot: React.SFC<IProps> = ({ label, children }) => {
     return (
         <StyledSlot>
-            {children || <SlotLabel>{playerPosition}</SlotLabel>}
+            {children || <SlotLabel>{label}</SlotLabel>}
         </StyledSlot>
     );
 };
