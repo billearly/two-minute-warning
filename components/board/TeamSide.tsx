@@ -5,7 +5,9 @@ import { InPlayStore } from '../../stores';
 import { PlayerPosition, Side } from '../../enum';
 import { IPlayer, IPlay } from '../../model';
 import { PlayerCard, PlayCard } from '../cards';
-import { Slot } from './Slot'
+import { Slot } from './Slot';
+import { TeamActions } from './TeamActions';
+import { ActionButton } from './ActionButton';
 import StoreTypes from '../../stores/StoreTypes';
 
 interface IProps {
@@ -15,19 +17,20 @@ interface IProps {
 
 const Team = styled.div`
     display: flex;
-    padding-right: 5rem;
 `;
 
 const TeamSideStyled = styled.div`
-    height: 50%;
+    height: 40%;
     width: 70%;
     margin: 0 auto;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
     &:first-child {
-        align-items: flex-end;
+        justify-content: flex-end;
         border-bottom: 2px solid white;
     }
 `;
@@ -55,11 +58,21 @@ export class TeamSide extends Component<IProps> {
                             {this.generateSlot(PlayerPosition.QB)}
                             {this.generateSlot(PlayerPosition.RB)}
                             {this.generateSlot(PlayerPosition.SR)}
+
+                            <Slot label='PLAY'>
+                                {this.generatePlayCard(this.props.InPlayStore.currentPlay)}
+                            </Slot>
                         </Team>
 
-                        <Slot label='PLAY'>
-                            {this.generatePlayCard(this.props.InPlayStore.currentPlay)}
-                        </Slot>
+                        <TeamActions>
+                            <ActionButton onClick={() => { alert('hike!') }}>
+                                Hike
+                            </ActionButton>
+
+                            <ActionButton onClick={() => { alert('timeout!') }}>
+                                Timeout
+                            </ActionButton>
+                        </TeamActions>
                     </TeamSideStyled>
                 );
 
@@ -72,9 +85,9 @@ export class TeamSide extends Component<IProps> {
                             {this.generateSlot(PlayerPosition.DE)}
                             {this.generateSlot(PlayerPosition.DT)}
                             {this.generateSlot(PlayerPosition.S)}
-                        </Team>
 
-                        <Slot label='PLAY'/>
+                            <Slot label='PLAY'/>
+                        </Team>
                     </TeamSideStyled>
                 );
 

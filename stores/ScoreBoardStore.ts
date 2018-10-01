@@ -50,7 +50,7 @@ export class ScoreBoardStore {
 
     @computed
     get getTimeLeft (): string {
-        if (!this.isGameStarted || this.timeLeft <= 0) {
+        if (this.timeLeft <= 0) {
             return '---';
         }
 
